@@ -19,9 +19,7 @@ namespace MicroserviceSessionState
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-
-            services.AddSingleton<HttpMessageHandler, HttpClientHandler>();
-            services.AddScoped<RequestHttpClient>();
+            services.AddRequestId();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -32,7 +30,7 @@ namespace MicroserviceSessionState
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseSessionStateTracking();
+            app.UseRequestId();
 
             app.UseMvc();
         }

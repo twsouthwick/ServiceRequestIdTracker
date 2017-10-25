@@ -7,15 +7,23 @@ using System.Net.Http;
 using System.Threading;
 using Microsoft.AspNetCore.Http;
 using System.Diagnostics;
+using StateManager;
 
 namespace MicroserviceSessionState.Controllers
 {
     [Route("api/[controller]")]
-    public class OtherController : Controller
+    public class OtherController
     {
+        private readonly IRequestIdAccessor _requestId;
+
+        public OtherController(IRequestIdAccessor requestId)
+        {
+            _requestId = requestId;
+        }
+
         public string Get()
         {
-            return HttpContext.GetId();
+            return _requestId.Id;
         }
     }
 
@@ -23,17 +31,19 @@ namespace MicroserviceSessionState.Controllers
     public class ValuesController : Controller
     {
         private readonly RequestHttpClient _client;
+        private readonly IRequestIdAccessor _requestId;
 
-        public ValuesController(RequestHttpClient client)
+        public ValuesController(RequestHttpClient client, IRequestIdAccessor requestId)
         {
             _client = client;
+            _requestId = requestId;
         }
 
         public async Task<string> Get()
         {
             var result = await _client.GetStringAsync("http://localhost:14392/api/other");
 
-            return $"{result}{Environment.NewLine}{HttpContext.GetId()}";
+            return $"{result}{Environment.NewLine}{_requestId.Id}";
         }
     }
 }

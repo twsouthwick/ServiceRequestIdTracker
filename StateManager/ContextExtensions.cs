@@ -4,7 +4,7 @@ using static StateManager.Constants;
 
 namespace Microsoft.AspNetCore.Http
 {
-    public static class ContextExtensions
+    internal static class ContextExtensions
     {
         public static string GetId(this HttpContext context)
         {
