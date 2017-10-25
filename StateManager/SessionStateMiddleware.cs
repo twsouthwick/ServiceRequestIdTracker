@@ -3,13 +3,15 @@ using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
+using static StateManager.Constants;
+
 namespace StateManager
 {
     internal class SessionStateMiddleware
     {
         private readonly RequestDelegate _next;
 
-        private static readonly string[] s_headers = new[] { Constants.SessionId };
+        private static readonly string[] s_headers = new[] { SessionId };
 
         public SessionStateMiddleware(RequestDelegate next)
         {
@@ -30,5 +32,4 @@ namespace StateManager
             return _next(context);
         }
     }
-
 }

@@ -20,7 +20,8 @@ namespace MicroserviceSessionState
         {
             services.AddMvc();
 
-            services.AddSingleton<HttpClient>();
+            services.AddSingleton<HttpMessageHandler, HttpClientHandler>();
+            services.AddScoped<RequestHttpClient>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

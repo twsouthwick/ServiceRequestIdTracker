@@ -5,36 +5,37 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
 using System.Threading;
+using Microsoft.AspNetCore.Http;
+using System.Diagnostics;
 
 namespace MicroserviceSessionState.Controllers
 {
     [Route("api/[controller]")]
-    public class OtherController
+    public class OtherController : Controller
     {
-        public int Get()
+        public string Get()
         {
-            return 5;
+            return HttpContext.GetId();
         }
     }
 
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
-        private readonly HttpClient _client;
+        private readonly RequestHttpClient _client;
 
-        public ValuesController(HttpClient client)
+        public ValuesController(RequestHttpClient client)
         {
             _client = client;
         }
 
-        public async Task<int> Get()
+        public async Task<string> Get()
         {
-            using (var request = new HttpRequestMessage(HttpMethod.Get, "http://localhost:14392/api/other"))
-            {
-                await _client.SendAsync(HttpContext, request, CancellationToken.None);
-            }
+            var result = await _client.GetStringAsync("http://localhost:14392/api/other");
 
-            return 5;
+            Debug.Assert(HttpContext.GetId() == result);
+
+            return result;
         }
     }
 }
