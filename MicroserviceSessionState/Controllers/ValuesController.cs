@@ -3,42 +3,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using System.Net.Http;
+using System.Threading;
 
 namespace MicroserviceSessionState.Controllers
 {
     [Route("api/[controller]")]
+    public class OtherController
+    {
+        public int Get()
+        {
+            return 5;
+        }
+    }
+
+    [Route("api/[controller]")]
     public class ValuesController : Controller
     {
-        // GET api/values
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly HttpClient _client;
+
+        public ValuesController(HttpClient client)
         {
-            return new string[] { "value1", "value2" };
+            _client = client;
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<int> Get()
         {
-            return "value";
-        }
+            using (var request = new HttpRequestMessage(HttpMethod.Get, "http://localhost:14392/api/other"))
+            {
+                await _client.SendAsync(HttpContext, request, CancellationToken.None);
+            }
 
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return 5;
         }
     }
 }
