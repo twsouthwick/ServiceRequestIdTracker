@@ -7,16 +7,16 @@ using System.Net.Http;
 using System.Threading;
 using Microsoft.AspNetCore.Http;
 using System.Diagnostics;
-using StateManager;
+using RequestId;
 
-namespace MicroserviceSessionState.Controllers
+namespace RequestIdExample.Controllers
 {
     [Route("api/[controller]")]
     public class OtherController
     {
-        private readonly IRequestIdAccessor _requestId;
+        private readonly IServiceRequestIdAccessor _requestId;
 
-        public OtherController(IRequestIdAccessor requestId)
+        public OtherController(IServiceRequestIdAccessor requestId)
         {
             _requestId = requestId;
         }
@@ -30,10 +30,10 @@ namespace MicroserviceSessionState.Controllers
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
-        private readonly RequestHttpClient _client;
-        private readonly IRequestIdAccessor _requestId;
+        private readonly ServiceRequestHttpClient _client;
+        private readonly IServiceRequestIdAccessor _requestId;
 
-        public ValuesController(RequestHttpClient client, IRequestIdAccessor requestId)
+        public ValuesController(ServiceRequestHttpClient client, IServiceRequestIdAccessor requestId)
         {
             _client = client;
             _requestId = requestId;

@@ -16,7 +16,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "MicroserviceSessionState": {
+    "RequestIdExample": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "api/values",

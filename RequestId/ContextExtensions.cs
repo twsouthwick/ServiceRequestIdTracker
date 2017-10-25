@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 
-using static StateManager.Constants;
+using static RequestId.Constants;
 
-namespace Microsoft.AspNetCore.Http
+namespace RequestId
 {
     internal static class ContextExtensions
     {

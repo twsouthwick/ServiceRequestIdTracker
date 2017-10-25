@@ -3,17 +3,17 @@ using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
-using static StateManager.Constants;
+using static RequestId.Constants;
 
-namespace StateManager
+namespace RequestId
 {
-    internal class SessionStateMiddleware
+    internal class ServiceRequestIdMiddleware
     {
         private readonly RequestDelegate _next;
 
         private static readonly string[] s_headers = new[] { SessionId };
 
-        public SessionStateMiddleware(RequestDelegate next)
+        public ServiceRequestIdMiddleware(RequestDelegate next)
         {
             _next = next;
         }

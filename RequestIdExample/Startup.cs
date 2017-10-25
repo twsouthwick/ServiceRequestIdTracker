@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Net.Http;
 
-namespace MicroserviceSessionState
+namespace RequestIdExample
 {
     public class Startup
     {
