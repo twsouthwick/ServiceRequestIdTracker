@@ -13,5 +13,4 @@ namespace System.Net.Http
             DefaultRequestHeaders.Add(SessionId, contextAccessor.HttpContext.GetId());
         }
     }
-
 }

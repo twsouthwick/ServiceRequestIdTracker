@@ -33,9 +33,7 @@ namespace MicroserviceSessionState.Controllers
         {
             var result = await _client.GetStringAsync("http://localhost:14392/api/other");
 
-            Debug.Assert(HttpContext.GetId() == result);
-
-            return result;
+            return $"{result}{Environment.NewLine}{HttpContext.GetId()}";
         }
     }
 }
