@@ -4,11 +4,13 @@ namespace RequestId
 {
     internal class ServiceRequestIdAccessor : IServiceRequestIdAccessor
     {
+        private readonly IHttpContextAccessor _contextAccessor;
+
         public ServiceRequestIdAccessor(IHttpContextAccessor contextAccessor)
         {
-            Id = contextAccessor.HttpContext.GetId();
+            _contextAccessor = contextAccessor;
         }
 
-        public string Id { get; }
+        public string Id => _contextAccessor.HttpContext.GetId();
     }
 }
