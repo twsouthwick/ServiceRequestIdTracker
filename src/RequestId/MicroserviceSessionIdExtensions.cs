@@ -14,7 +14,7 @@ namespace Microsoft.AspNetCore.Builder
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<HttpMessageHandler, HttpClientHandler>();
             services.AddScoped<MicroserviceRequestHttpClient>();
-            services.AddScoped<IMicroserverSessionIdAccessor, IdAccessor>();
+            services.AddSingleton<IMicroserverSessionIdAccessor, IdAccessor>();
             services.Add(ServiceDescriptor.Singleton(typeof(ILogger<>), typeof(MicroserviceSessionId.Logger<>)));
         }
 

@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 
+using static MicroserviceSessionId.Constants;
+
 namespace MicroserviceSessionId
 {
     internal class IdAccessor : IMicroserverSessionIdAccessor
@@ -11,6 +13,6 @@ namespace MicroserviceSessionId
             _contextAccessor = contextAccessor;
         }
 
-        public string Id => _contextAccessor.HttpContext.GetId();
+        public string Id => _contextAccessor.HttpContext?.Items[SessionId] as string;
     }
 }

@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions.Internal;
 using System;
 
@@ -7,17 +6,17 @@ namespace MicroserviceSessionId
 {
     internal class Logger<T> : ILogger<T>
     {
-        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IMicroserverSessionIdAccessor _accessor;
         private readonly ILogger _other;
 
-        public Logger(ILoggerFactory factory, IHttpContextAccessor accessor)
+        public Logger(ILoggerFactory factory, IMicroserverSessionIdAccessor accessor)
         {
             if (factory == null)
             {
                 throw new ArgumentNullException(nameof(factory));
             }
 
-            _httpContextAccessor = accessor;
+            _accessor = accessor;
             _other = factory.CreateLogger(TypeNameHelper.GetTypeDisplayName(typeof(T)));
         }
 
@@ -40,7 +39,7 @@ namespace MicroserviceSessionId
 
         private IDisposable SetId()
         {
-            var id = _httpContextAccessor.HttpContext?.GetId();
+            var id = _accessor.Id;
 
             if (id != null)
             {
