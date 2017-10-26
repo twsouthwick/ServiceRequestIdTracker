@@ -4,7 +4,7 @@ using static MicroserviceSessionId.Constants;
 
 namespace MicroserviceSessionId
 {
-    internal class IdAccessor : IMicroserverSessionIdAccessor
+    internal class IdAccessor : IMicroserviceSessionIdAccessor
     {
         private readonly IHttpContextAccessor _contextAccessor;
 

@@ -13,7 +13,7 @@ namespace Microsoft.AspNetCore.Builder
         {
             services.AddSingleton<HttpMessageHandler, HttpClientHandler>();
             services.AddScoped<MicroserviceRequestHttpClient>();
-            services.AddSingleton<IMicroserverSessionIdAccessor, IdAccessor>();
+            services.AddSingleton<IMicroserviceSessionIdAccessor, IdAccessor>();
 
             // IHttpContextAccessor is not available, register it for future use
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();

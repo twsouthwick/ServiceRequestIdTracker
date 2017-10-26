@@ -5,10 +5,10 @@ namespace MicroserviceSessionId
 {
     internal class Logger<T> : ILogger<T>
     {
-        private readonly IMicroserverSessionIdAccessor _accessor;
+        private readonly IMicroserviceSessionIdAccessor _accessor;
         private readonly ILogger _other;
 
-        public Logger(ILoggerFactory factory, IMicroserverSessionIdAccessor accessor)
+        public Logger(ILoggerFactory factory, IMicroserviceSessionIdAccessor accessor)
         {
             if (factory == null)
             {

@@ -11,9 +11,9 @@ namespace RequestIdExample.Controllers
     {
         private readonly ILogger<ValuesController> _logger;
         private readonly MicroserviceRequestHttpClient _client;
-        private readonly IMicroserverSessionIdAccessor _requestId;
+        private readonly IMicroserviceSessionIdAccessor _requestId;
 
-        public ValuesController(ILogger<ValuesController> logger, MicroserviceRequestHttpClient client, IMicroserverSessionIdAccessor requestId)
+        public ValuesController(ILogger<ValuesController> logger, MicroserviceRequestHttpClient client, IMicroserviceSessionIdAccessor requestId)
         {
             _logger = logger;
             _client = client;

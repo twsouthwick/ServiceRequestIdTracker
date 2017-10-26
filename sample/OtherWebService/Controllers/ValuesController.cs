@@ -8,9 +8,9 @@ namespace OtherWebService.Controllers
     public class ValuesController
     {
         private readonly ILogger<ValuesController> _logger;
-        private readonly IMicroserverSessionIdAccessor _requestId;
+        private readonly IMicroserviceSessionIdAccessor _requestId;
 
-        public ValuesController(ILogger<ValuesController> logger, IMicroserverSessionIdAccessor requestId)
+        public ValuesController(ILogger<ValuesController> logger, IMicroserviceSessionIdAccessor requestId)
         {
             _logger = logger;
             _requestId = requestId;
