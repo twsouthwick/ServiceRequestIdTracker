@@ -9,7 +9,7 @@ namespace Microsoft.AspNetCore.Builder
 {
     public static class MicroserviceSessionIdExtensions
     {
-        public static void AddRequestId(this IServiceCollection services)
+        public static void AddMicroserviceSessionId(this IServiceCollection services)
         {
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<HttpMessageHandler, HttpClientHandler>();
@@ -18,7 +18,7 @@ namespace Microsoft.AspNetCore.Builder
             services.Add(ServiceDescriptor.Singleton(typeof(ILogger<>), typeof(MicroserviceSessionId.Logger<>)));
         }
 
-        public static IApplicationBuilder UseRequestId(this IApplicationBuilder builder)
+        public static IApplicationBuilder UseMicroserviceSessionId(this IApplicationBuilder builder)
         {
             return builder.UseMiddleware<MicroserviceSessionIdMiddleware>();
         }
