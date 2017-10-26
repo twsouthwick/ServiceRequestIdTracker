@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MicroserviceSessionId;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using MicroserviceSessionId;
 
 namespace OtherWebService.Controllers
 {

@@ -63,11 +63,11 @@ namespace MicroserviceSessionId
 
         private sealed class EmptyDisposable : IDisposable
         {
-            public static IDisposable Instance { get; } = new EmptyDisposable();
-
             private EmptyDisposable()
             {
             }
+
+            public static IDisposable Instance { get; } = new EmptyDisposable();
 
             public void Dispose()
             {
@@ -75,4 +75,3 @@ namespace MicroserviceSessionId
         }
     }
 }
-
