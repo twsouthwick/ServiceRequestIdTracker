@@ -1,0 +1,18 @@
+os: Visual Studio 2017
+
+environment:
+  image: Visual Studio 2017
+
+build:
+  verbosity: minimal
+
+build_script:
+  - ps: dotnet --info
+  - ps: dotnet build
+
+after_build:
+  - ps: dotnet pack src\MicroserviceSessionId\MicroserviceSessionId.csproj
+
+artifacts:
+- path: '**\*.nupkg'
+  name: drop
