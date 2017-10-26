@@ -11,10 +11,14 @@ namespace Microsoft.AspNetCore.Builder
     {
         public static void AddMicroserviceSessionId(this IServiceCollection services)
         {
-            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<HttpMessageHandler, HttpClientHandler>();
             services.AddScoped<MicroserviceRequestHttpClient>();
             services.AddSingleton<IMicroserverSessionIdAccessor, IdAccessor>();
+
+            // IHttpContextAccessor is not available, register it for future use
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            // Override internal ILogger<> instance with a custom one to track the microservice session id when available
             services.Add(ServiceDescriptor.Singleton(typeof(ILogger<>), typeof(MicroserviceSessionId.Logger<>)));
         }
 

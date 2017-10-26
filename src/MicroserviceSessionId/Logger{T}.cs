@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions.Internal;
 using System;
 
 namespace MicroserviceSessionId
@@ -17,7 +16,7 @@ namespace MicroserviceSessionId
             }
 
             _accessor = accessor;
-            _other = factory.CreateLogger(TypeNameHelper.GetTypeDisplayName(typeof(T)));
+            _other = new Microsoft.Extensions.Logging.Logger<T>(factory);
         }
 
         public IDisposable BeginScope<TState>(TState state)
@@ -39,19 +38,12 @@ namespace MicroserviceSessionId
 
         private IDisposable SetId()
         {
-            var id = _accessor.Id;
-
-            if (id != null)
-            {
-                return _other.BeginScope("{MicroServiceRequestId}", id);
-            }
-            else
-            {
-                return EmptyDisposable.Instance;
-            }
+            return _accessor.Id is string id
+                ? _other.BeginScope("{MicroServiceRequestId}", id)
+                : EmptyDisposable.Instance;
         }
 
-        private class CombinedScope : IDisposable
+        private sealed class CombinedScope : IDisposable
         {
             private readonly IDisposable _disposable1;
             private readonly IDisposable _disposable2;
@@ -69,7 +61,7 @@ namespace MicroserviceSessionId
             }
         }
 
-        private class EmptyDisposable : IDisposable
+        private sealed class EmptyDisposable : IDisposable
         {
             public static IDisposable Instance { get; } = new EmptyDisposable();
 
