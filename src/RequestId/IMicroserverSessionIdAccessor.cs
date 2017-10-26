@@ -1,6 +1,6 @@
 ﻿namespace MicroserviceSessionId
 {
-    public interface IServiceRequestIdAccessor
+    public interface IMicroserverSessionIdAccessor
     {
         string Id { get; }
     }

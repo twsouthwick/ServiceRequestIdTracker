@@ -4,9 +4,9 @@ using static MicroserviceSessionId.Constants;
 
 namespace MicroserviceSessionId
 {
-    public class ServiceRequestHttpClient : HttpClient
+    public class MicroserviceRequestHttpClient : HttpClient
     {
-        public ServiceRequestHttpClient(HttpMessageHandler handler, IServiceRequestIdAccessor requestId)
+        public MicroserviceRequestHttpClient(HttpMessageHandler handler, IMicroserverSessionIdAccessor requestId)
             : base(handler, false)
         {
             DefaultRequestHeaders.Add(SessionId, requestId.Id);

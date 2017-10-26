@@ -8,13 +8,13 @@ using static MicroserviceSessionId.Constants;
 
 namespace MicroserviceSessionId
 {
-    internal class ServiceRequestIdMiddleware
+    internal class MicroserviceSessionIdMiddleware
     {
         private readonly RequestDelegate _next;
 
         private static readonly string[] s_headers = new[] { SessionId };
 
-        public ServiceRequestIdMiddleware(RequestDelegate next)
+        public MicroserviceSessionIdMiddleware(RequestDelegate next)
         {
             _next = next;
         }

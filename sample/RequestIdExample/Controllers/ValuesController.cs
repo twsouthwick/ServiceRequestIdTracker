@@ -10,10 +10,10 @@ namespace RequestIdExample.Controllers
     public class ValuesController : Controller
     {
         private readonly ILogger<ValuesController> _logger;
-        private readonly ServiceRequestHttpClient _client;
-        private readonly IServiceRequestIdAccessor _requestId;
+        private readonly MicroserviceRequestHttpClient _client;
+        private readonly IMicroserverSessionIdAccessor _requestId;
 
-        public ValuesController(ILogger<ValuesController> logger, ServiceRequestHttpClient client, IServiceRequestIdAccessor requestId)
+        public ValuesController(ILogger<ValuesController> logger, MicroserviceRequestHttpClient client, IMicroserverSessionIdAccessor requestId)
         {
             _logger = logger;
             _client = client;

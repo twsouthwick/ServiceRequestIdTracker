@@ -2,11 +2,11 @@
 
 namespace MicroserviceSessionId
 {
-    internal class ServiceRequestIdAccessor : IServiceRequestIdAccessor
+    internal class IdAccessor : IMicroserverSessionIdAccessor
     {
         private readonly IHttpContextAccessor _contextAccessor;
 
-        public ServiceRequestIdAccessor(IHttpContextAccessor contextAccessor)
+        public IdAccessor(IHttpContextAccessor contextAccessor)
         {
             _contextAccessor = contextAccessor;
         }

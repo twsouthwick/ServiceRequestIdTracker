@@ -2,6 +2,6 @@
 {
     internal static class Constants
     {
-        public const string SessionId = "_sessionId";
+        public const string SessionId = "__microserviceSessionId";
     }
 }

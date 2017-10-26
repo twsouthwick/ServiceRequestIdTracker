@@ -1,17 +1,16 @@
-﻿using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions.Internal;
-using Microsoft.AspNetCore.Http;
+using System;
 
 namespace MicroserviceSessionId
 {
-    internal class RequestIdLogger<T> : ILogger<T>
+    internal class Logger<T> : ILogger<T>
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ILogger _other;
 
-        public RequestIdLogger(ILoggerFactory factory, IHttpContextAccessor accessor)
+        public Logger(ILoggerFactory factory, IHttpContextAccessor accessor)
         {
             if (factory == null)
             {

@@ -7,20 +7,20 @@ using System.Net.Http;
 
 namespace Microsoft.AspNetCore.Builder
 {
-    public static class ServiceRequestIdExtensions
+    public static class MicroserviceSessionIdExtensions
     {
         public static void AddRequestId(this IServiceCollection services)
         {
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<HttpMessageHandler, HttpClientHandler>();
-            services.AddScoped<ServiceRequestHttpClient>();
-            services.AddScoped<IServiceRequestIdAccessor, ServiceRequestIdAccessor>();
-            services.Add(ServiceDescriptor.Singleton(typeof(ILogger<>), typeof(RequestIdLogger<>)));
+            services.AddScoped<MicroserviceRequestHttpClient>();
+            services.AddScoped<IMicroserverSessionIdAccessor, IdAccessor>();
+            services.Add(ServiceDescriptor.Singleton(typeof(ILogger<>), typeof(MicroserviceSessionId.Logger<>)));
         }
 
         public static IApplicationBuilder UseRequestId(this IApplicationBuilder builder)
         {
-            return builder.UseMiddleware<ServiceRequestIdMiddleware>();
+            return builder.UseMiddleware<MicroserviceSessionIdMiddleware>();
         }
     }
 }
