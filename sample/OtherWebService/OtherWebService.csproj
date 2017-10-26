@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\RequestId\MicroserviceSessionId.csproj" />
+    <ProjectReference Include="..\..\src\MicroserviceSessionId\MicroserviceSessionId.csproj" />
   </ItemGroup>
 
 </Project>

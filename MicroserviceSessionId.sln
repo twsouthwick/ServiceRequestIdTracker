@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RequestIdExample", "sample\RequestIdExample\RequestIdExample.csproj", "{FF2891B2-F3DE-4EFE-BC62-6A68A1DCDDF4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroserviceSessionId", "src\RequestId\MicroserviceSessionId.csproj", "{40946EA0-94C1-4E52-A143-5C7FD7334EF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroserviceSessionId", "src\MicroserviceSessionId\MicroserviceSessionId.csproj", "{40946EA0-94C1-4E52-A143-5C7FD7334EF5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OtherWebService", "sample\OtherWebService\OtherWebService.csproj", "{FDB4E680-BE63-4E8B-8298-8AD892B05882}"
 EndProject
