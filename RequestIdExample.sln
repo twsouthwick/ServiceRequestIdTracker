@@ -3,11 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RequestIdExample", "RequestIdExample\RequestIdExample.csproj", "{FF2891B2-F3DE-4EFE-BC62-6A68A1DCDDF4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RequestIdExample", "sample\RequestIdExample\RequestIdExample.csproj", "{FF2891B2-F3DE-4EFE-BC62-6A68A1DCDDF4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RequestId", "RequestId\RequestId.csproj", "{40946EA0-94C1-4E52-A143-5C7FD7334EF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RequestId", "src\RequestId\RequestId.csproj", "{40946EA0-94C1-4E52-A143-5C7FD7334EF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OtherWebService", "OtherWebService\OtherWebService.csproj", "{FDB4E680-BE63-4E8B-8298-8AD892B05882}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OtherWebService", "sample\OtherWebService\OtherWebService.csproj", "{FDB4E680-BE63-4E8B-8298-8AD892B05882}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{894238B8-163A-47CA-AA02-2A75CC659401}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7BF11484-FE7F-4A9B-9C45-19DF2383B38F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +34,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FF2891B2-F3DE-4EFE-BC62-6A68A1DCDDF4} = {894238B8-163A-47CA-AA02-2A75CC659401}
+		{40946EA0-94C1-4E52-A143-5C7FD7334EF5} = {7BF11484-FE7F-4A9B-9C45-19DF2383B38F}
+		{FDB4E680-BE63-4E8B-8298-8AD892B05882} = {894238B8-163A-47CA-AA02-2A75CC659401}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1152105C-4008-4C1E-8939-E73CC45642A2}
