@@ -11,23 +11,18 @@ namespace MicroserviceSessionId
     {
         private readonly RequestDelegate _next;
 
-        private static readonly string[] s_headers = new[] { SessionId };
-
         public MicroserviceSessionIdMiddleware(RequestDelegate next)
         {
             _next = next;
         }
 
-        public Task Invoke(HttpContext context)
+        public Task Invoke(HttpContext context, IdAccessor accessor)
         {
-            foreach (var header in s_headers)
-            {
-                var items = context.Request.Headers[header];
+            var items = context.Request.Headers[SessionId];
 
-                Debug.Assert(items.Count == 0 || items.Count == 1);
+            Debug.Assert(items.Count == 0 || items.Count == 1);
 
-                context.Items[header] = items.Count == 0 ? Guid.NewGuid().ToString() : items[0];
-            }
+            accessor.Id = items.Count == 0 ? Guid.NewGuid().ToString() : items[0];
 
             return _next(context);
         }

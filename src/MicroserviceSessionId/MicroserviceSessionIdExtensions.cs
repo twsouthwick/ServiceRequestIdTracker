@@ -1,7 +1,5 @@
 ﻿using MicroserviceSessionId;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 using System.Net.Http;
 
@@ -13,10 +11,11 @@ namespace Microsoft.AspNetCore.Builder
         {
             services.AddSingleton<HttpMessageHandler, HttpClientHandler>();
             services.AddScoped<MicroserviceRequestHttpClient>();
-            services.AddSingleton<IMicroserviceSessionIdAccessor, IdAccessor>();
 
-            // IHttpContextAccessor is not available, register it for future use
-            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            // Register an id accessor for external and internal use
+            var accessor = new IdAccessor();
+            services.Add(ServiceDescriptor.Singleton(accessor));
+            services.Add(ServiceDescriptor.Singleton<IMicroserviceSessionIdAccessor>(accessor));
 
             // Override internal ILogger<> instance with a custom one to track the microservice session id when available
             services.Add(ServiceDescriptor.Singleton(typeof(ILogger<>), typeof(MicroserviceSessionId.Logger<>)));

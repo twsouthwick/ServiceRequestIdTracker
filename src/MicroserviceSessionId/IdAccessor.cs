@@ -1,18 +1,15 @@
-﻿using Microsoft.AspNetCore.Http;
-
-using static MicroserviceSessionId.Constants;
+﻿using System.Threading;
 
 namespace MicroserviceSessionId
 {
     internal class IdAccessor : IMicroserviceSessionIdAccessor
     {
-        private readonly IHttpContextAccessor _contextAccessor;
+        private static readonly AsyncLocal<string> _id = new AsyncLocal<string>();
 
-        public IdAccessor(IHttpContextAccessor contextAccessor)
+        public string Id
         {
-            _contextAccessor = contextAccessor;
+            get { return _id.Value; }
+            set { _id.Value = value; }
         }
-
-        public string Id => _contextAccessor.HttpContext?.Items[SessionId] as string;
     }
 }
