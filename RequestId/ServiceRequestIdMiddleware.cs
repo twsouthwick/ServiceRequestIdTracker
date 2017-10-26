@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ namespace RequestId
             _next = next;
         }
 
-        public Task Invoke(HttpContext context)
+        public Task Invoke(HttpContext context, ILoggerFactory logger)
         {
             foreach (var header in s_headers)
             {

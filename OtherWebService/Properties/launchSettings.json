@@ -1,13 +1,11 @@
 {
   "profiles": {
-    "RequestIdExample": {
+    "OtherWebService": {
       "commandName": "Project",
-      "launchBrowser": true,
-      "launchUrl": "api/values",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "http://localhost:14392/"
+      "applicationUrl": "http://localhost:5367/"
     }
   }
 }
