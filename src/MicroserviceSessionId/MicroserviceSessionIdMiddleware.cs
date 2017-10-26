@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -19,7 +18,7 @@ namespace MicroserviceSessionId
             _next = next;
         }
 
-        public Task Invoke(HttpContext context, ILoggerFactory logger)
+        public Task Invoke(HttpContext context)
         {
             foreach (var header in s_headers)
             {
