@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace RequestId
+namespace MicroserviceSessionId
 {
     internal class ServiceRequestIdAccessor : IServiceRequestIdAccessor
     {

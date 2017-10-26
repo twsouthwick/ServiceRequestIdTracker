@@ -1,8 +1,8 @@
 ﻿using System.Net.Http;
 
-using static RequestId.Constants;
+using static MicroserviceSessionId.Constants;
 
-namespace RequestId
+namespace MicroserviceSessionId
 {
     public class ServiceRequestHttpClient : HttpClient
     {

@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-using static RequestId.Constants;
+using static MicroserviceSessionId.Constants;
 
-namespace RequestId
+namespace MicroserviceSessionId
 {
     internal static class ContextExtensions
     {

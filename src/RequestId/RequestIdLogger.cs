@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Microsoft.Extensions.Logging.Abstractions.Internal;
 using Microsoft.AspNetCore.Http;
 
-namespace RequestId
+namespace MicroserviceSessionId
 {
     internal class RequestIdLogger<T> : ILogger<T>
     {

@@ -4,9 +4,9 @@ using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
-using static RequestId.Constants;
+using static MicroserviceSessionId.Constants;
 
-namespace RequestId
+namespace MicroserviceSessionId
 {
     internal class ServiceRequestIdMiddleware
     {

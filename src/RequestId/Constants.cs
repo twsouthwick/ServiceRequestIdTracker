@@ -1,4 +1,4 @@
-﻿namespace RequestId
+﻿namespace MicroserviceSessionId
 {
     internal static class Constants
     {

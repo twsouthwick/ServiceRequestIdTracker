@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using RequestId;
+using MicroserviceSessionId;
 using System;
 using System.Threading.Tasks;
 
