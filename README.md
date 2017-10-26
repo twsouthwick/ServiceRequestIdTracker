@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/2tbyw33lchgke9sm/branch/master?svg=true)](https://ci.appveyor.com/project/twsouthwick/servicerequestidtracker/branch/master)
+
 # Flowing Request Id across WebApi calls
 
 In order to track request IDs across web api calls (for instance in a microservice scenario):
