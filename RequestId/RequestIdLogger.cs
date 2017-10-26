@@ -45,7 +45,7 @@ namespace RequestId
 
             if (id != null)
             {
-                return _other.BeginScope(new Dictionary<string, object> { { "SomethingRequestId", id } });
+                return _other.BeginScope("{MicroServiceRequestId}", id);
             }
             else
             {
