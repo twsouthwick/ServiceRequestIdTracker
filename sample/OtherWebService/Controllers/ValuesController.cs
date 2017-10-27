@@ -18,7 +18,11 @@ namespace OtherWebService.Controllers
 
         public string Get()
         {
-            _logger.LogInformation("Running OtherWebService.Values.Get");
+            using (_logger.BeginScope("hello"))
+            {
+                _logger.LogInformation("Running OtherWebService.Values.Get");
+            }
+
             return _requestId.Id;
         }
     }
