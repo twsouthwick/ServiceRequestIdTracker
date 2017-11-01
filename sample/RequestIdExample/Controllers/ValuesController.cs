@@ -1,8 +1,8 @@
 ﻿// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-using RequestCorrelation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using RequestCorrelation;
 using System;
 using System.Threading.Tasks;
 
