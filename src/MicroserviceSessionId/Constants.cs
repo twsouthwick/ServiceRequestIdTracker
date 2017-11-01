@@ -5,6 +5,6 @@ namespace MicroserviceSessionId
 {
     internal static class Constants
     {
-        public const string SessionId = "__microserviceSessionId";
+        public const string CorrelationIdHeader = "X-Correlation-ID";
     }
 }

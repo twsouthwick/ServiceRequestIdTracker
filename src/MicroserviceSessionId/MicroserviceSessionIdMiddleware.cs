@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
 
@@ -18,15 +19,20 @@ namespace MicroserviceSessionId
             _next = next;
         }
 
-        public async Task Invoke(HttpContext context, IdAccessor accessor)
+        public async Task Invoke(HttpContext context, ILogger<MicroserviceSessionIdMiddleware> log, IdAccessor accessor)
         {
-            var items = context.Request.Headers[SessionId];
+            var items = context.Request.Headers[CorrelationIdHeader];
 
             if (items.Count == 0 || items.Count == 1)
             {
-                accessor.Id = items.Count == 0 ? Guid.NewGuid().ToString() : items[0];
+                var id = items.Count == 0 ? Guid.NewGuid().ToString() : items[0];
 
-                await _next(context);
+                accessor.Id = id;
+
+                using (log.BeginScope("CorrelationId: {CorrelationId}", id))
+                {
+                    await _next(context);
+                }
             }
             else
             {

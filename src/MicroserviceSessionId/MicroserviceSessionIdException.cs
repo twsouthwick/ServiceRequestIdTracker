@@ -20,6 +20,6 @@ namespace MicroserviceSessionId
 
         public IReadOnlyCollection<string> Headers => _values;
 
-        public override string Message => $"Error: Contains '{_values.Count}' instances of '{SessionId}' header: '{_values}'";
+        public override string Message => $"Error: Contains '{_values.Count}' instances of '{CorrelationIdHeader}' header: '{_values}'";
     }
 }

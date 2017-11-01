@@ -12,7 +12,7 @@ namespace MicroserviceSessionId
         public MicroserviceRequestHttpClient(HttpMessageHandler handler, IMicroserviceSessionIdAccessor requestId)
             : base(handler, false)
         {
-            DefaultRequestHeaders.Add(SessionId, requestId.Id);
+            DefaultRequestHeaders.Add(CorrelationIdHeader, requestId.Id);
         }
     }
 }
