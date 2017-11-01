@@ -1,8 +1,8 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/2tbyw33lchgke9sm/branch/master?svg=true)](https://ci.appveyor.com/project/twsouthwick/servicerequestidtracker/branch/master)
 
-# Creating a microservice session id
+# Set up a correlation Id across microservice calls
 
-In order to track request IDs across web api calls (for instance in a microservice scenario):
+In order to correlate requests across web api calls (for instance in a microservice scenario):
 
 ```csharp
 public class Startup
@@ -35,4 +35,17 @@ public class Startup
 }
 ```
 
-Now, to request access to the id, request the interface `ICorrelationIdAccessor` via DI. Logs requested via `ILogger<>` will also contain the service request id as scoped information.
+## Exposed services
+
+In order to use any exposed services, the `app.UseRequestCorrelation()` must be added before any other middleware. Middleware
+run before this will not have access to any of the services. If MVC is registered before, then controlls will not have access
+to the correlation id.
+
+### HttpClient for requests
+An HttpClient instance is available and scoped for each request. This client sets the header so that calls made with it will
+propogate the correlation id. In order to use this, request the `RequestCorrelation.CorrelatedHttpClient` via dependendency
+injection.
+
+### Correlation Id
+In order to access the correlation id itself, you can request the `RequestCorrelation.ICorrelationIdAccessor` via dependency 
+injection. This is scope per request and will contain the correlation id.
