@@ -4,8 +4,7 @@
     "documentationRules": {
       "documentExposedElements": true,
       "documentInternalElements": true,
-      "companyName": "Taylor Southwick",
-      "copyrightText": "Copyright (c) {companyName}. All rights reserved.\nLicensed under the {licenseName} license. See {licenseFile} file in the project root for full license information.",
+      "copyrightText": "Licensed under the {licenseName} license. See {licenseFile} file in the project root for full license information.",
       "variables": {
         "licenseName": "MIT",
         "licenseFile": "LICENSE"
