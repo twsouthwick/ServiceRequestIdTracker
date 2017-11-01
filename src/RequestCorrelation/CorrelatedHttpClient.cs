@@ -3,13 +3,13 @@
 
 using System.Net.Http;
 
-using static MicroserviceSessionId.Constants;
+using static RequestCorrelation.Constants;
 
-namespace MicroserviceSessionId
+namespace RequestCorrelation
 {
-    public class MicroserviceRequestHttpClient : HttpClient
+    public class CorrelatedHttpClient : HttpClient
     {
-        public MicroserviceRequestHttpClient(HttpMessageHandler handler, IMicroserviceSessionIdAccessor requestId)
+        public CorrelatedHttpClient(HttpMessageHandler handler, ICorrelationIdAccessor requestId)
             : base(handler, false)
         {
             DefaultRequestHeaders.Add(CorrelationIdHeader, requestId.Id);

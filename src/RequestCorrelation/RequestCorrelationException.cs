@@ -5,15 +5,15 @@ using Microsoft.Extensions.Primitives;
 using System;
 using System.Collections.Generic;
 
-using static MicroserviceSessionId.Constants;
+using static RequestCorrelation.Constants;
 
-namespace MicroserviceSessionId
+namespace RequestCorrelation
 {
-    public class MicroserviceSessionIdException : Exception
+    public class RequestCorrelationException : Exception
     {
         private readonly StringValues _values;
 
-        internal MicroserviceSessionIdException(StringValues values)
+        internal RequestCorrelationException(StringValues values)
         {
             _values = values;
         }

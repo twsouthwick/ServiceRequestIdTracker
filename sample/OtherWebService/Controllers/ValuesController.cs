@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Taylor Southwick. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-using MicroserviceSessionId;
+using RequestCorrelation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -11,9 +11,9 @@ namespace OtherWebService.Controllers
     public class ValuesController
     {
         private readonly ILogger<ValuesController> _logger;
-        private readonly IMicroserviceSessionIdAccessor _requestId;
+        private readonly ICorrelationIdAccessor _requestId;
 
-        public ValuesController(ILogger<ValuesController> logger, IMicroserviceSessionIdAccessor requestId)
+        public ValuesController(ILogger<ValuesController> logger, ICorrelationIdAccessor requestId)
         {
             _logger = logger;
             _requestId = requestId;

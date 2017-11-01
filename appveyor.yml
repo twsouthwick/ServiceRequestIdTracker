@@ -7,10 +7,10 @@ build:
   verbosity: minimal
 
 build_script:
-  - cmd: msbuild /t:restore;build /p:Configuration=Release /m .\MicroserviceSessionId.sln /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+  - cmd: msbuild /t:restore;build /p:Configuration=Release /m .\RequestCorrelation.sln /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 
 after_build:
-  - cmd: msbuild /t:pack /p:Configuration=Release /m .\src\MicroserviceSessionId\MicroserviceSessionId.csproj /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+  - cmd: msbuild /t:pack /p:Configuration=Release /m .\src\RequestCorrelation\RequestCorrelation.csproj /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 
 artifacts:
 - path: '**\*.nupkg'

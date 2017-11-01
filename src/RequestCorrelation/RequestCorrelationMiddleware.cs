@@ -6,20 +6,20 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
 
-using static MicroserviceSessionId.Constants;
+using static RequestCorrelation.Constants;
 
-namespace MicroserviceSessionId
+namespace RequestCorrelation
 {
-    internal class MicroserviceSessionIdMiddleware
+    internal class RequestCorrelationMiddleware
     {
         private readonly RequestDelegate _next;
 
-        public MicroserviceSessionIdMiddleware(RequestDelegate next)
+        public RequestCorrelationMiddleware(RequestDelegate next)
         {
             _next = next;
         }
 
-        public async Task Invoke(HttpContext context, ILogger<MicroserviceSessionIdMiddleware> log, IdAccessor accessor)
+        public async Task Invoke(HttpContext context, ILogger<RequestCorrelationMiddleware> log, CorrelationIdAccessor accessor)
         {
             var items = context.Request.Headers[CorrelationIdHeader];
 
@@ -36,7 +36,7 @@ namespace MicroserviceSessionId
             }
             else
             {
-                throw new MicroserviceSessionIdException(items);
+                throw new RequestCorrelationException(items);
             }
         }
     }

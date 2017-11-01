@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Taylor Southwick. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-using MicroserviceSessionId;
+using RequestCorrelation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -13,10 +13,10 @@ namespace RequestIdExample.Controllers
     public class ValuesController : Controller
     {
         private readonly ILogger<ValuesController> _logger;
-        private readonly MicroserviceRequestHttpClient _client;
-        private readonly IMicroserviceSessionIdAccessor _requestId;
+        private readonly CorrelatedHttpClient _client;
+        private readonly ICorrelationIdAccessor _requestId;
 
-        public ValuesController(ILogger<ValuesController> logger, MicroserviceRequestHttpClient client, IMicroserviceSessionIdAccessor requestId)
+        public ValuesController(ILogger<ValuesController> logger, CorrelatedHttpClient client, ICorrelationIdAccessor requestId)
         {
             _logger = logger;
             _client = client;

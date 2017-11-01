@@ -1,29 +1,29 @@
 ﻿// Copyright (c) Taylor Southwick. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-using MicroserviceSessionId;
+using RequestCorrelation;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Net.Http;
 
 namespace Microsoft.AspNetCore.Builder
 {
-    public static class MicroserviceSessionIdExtensions
+    public static class RequestCorrelationExtensions
     {
-        public static void AddMicroserviceSessionId(this IServiceCollection services)
+        public static void AddRequestCorrelation(this IServiceCollection services)
         {
             services.TryAddSingleton<HttpMessageHandler, HttpClientHandler>();
-            services.AddScoped<MicroserviceRequestHttpClient>();
+            services.AddScoped<CorrelatedHttpClient>();
 
             // Register an id accessor for external and internal use
-            var accessor = new IdAccessor();
+            var accessor = new CorrelationIdAccessor();
             services.Add(ServiceDescriptor.Singleton(accessor));
-            services.Add(ServiceDescriptor.Singleton<IMicroserviceSessionIdAccessor>(accessor));
+            services.Add(ServiceDescriptor.Singleton<ICorrelationIdAccessor>(accessor));
         }
 
-        public static IApplicationBuilder UseMicroserviceSessionId(this IApplicationBuilder builder)
+        public static IApplicationBuilder UseRequestCorrelation(this IApplicationBuilder builder)
         {
-            return builder.UseMiddleware<MicroserviceSessionIdMiddleware>();
+            return builder.UseMiddleware<RequestCorrelationMiddleware>();
         }
     }
 }

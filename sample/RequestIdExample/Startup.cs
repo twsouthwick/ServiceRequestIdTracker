@@ -22,7 +22,7 @@ namespace RequestIdExample
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddMicroserviceSessionId();
+            services.AddRequestCorrelation();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -33,7 +33,7 @@ namespace RequestIdExample
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMicroserviceSessionId();
+            app.UseRequestCorrelation();
             app.UseMvc();
 
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));

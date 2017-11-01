@@ -18,7 +18,7 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddMvc();
-        services.AddMicroserviceSessionId();
+        services.AddRequestCorrelation();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -29,10 +29,10 @@ public class Startup
             app.UseDeveloperExceptionPage();
         }
 
-        app.UseMicroserviceSessionId();
+        app.UseRequestCorrelation();
         app.UseMvc();
     }
 }
 ```
 
-Now, to request access to the id, request the interface `IMicroserverSessionIdAccessor` via DI. Logs requested via `ILogger<>` will also contain the service request id as scoped information.
+Now, to request access to the id, request the interface `ICorrelationIdAccessor` via DI. Logs requested via `ILogger<>` will also contain the service request id as scoped information.

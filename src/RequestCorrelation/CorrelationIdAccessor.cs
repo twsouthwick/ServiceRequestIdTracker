@@ -3,9 +3,9 @@
 
 using System.Threading;
 
-namespace MicroserviceSessionId
+namespace RequestCorrelation
 {
-    internal class IdAccessor : IMicroserviceSessionIdAccessor
+    internal class CorrelationIdAccessor : ICorrelationIdAccessor
     {
         private static readonly AsyncLocal<string> _id = new AsyncLocal<string>();
 
