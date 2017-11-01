@@ -4,6 +4,6 @@ namespace RequestCorrelation
 {
     public interface ICorrelationIdAccessor
     {
-        string Id { get; }
+        string Id { get; set; }
     }
 }

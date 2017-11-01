@@ -18,7 +18,7 @@ namespace RequestCorrelation
             _next = next;
         }
 
-        public async Task Invoke(HttpContext context, ILogger<RequestCorrelationMiddleware> log, CorrelationIdAccessor accessor)
+        public async Task Invoke(HttpContext context, ILogger<RequestCorrelationMiddleware> log, ICorrelationIdAccessor accessor)
         {
             var items = context.Request.Headers[CorrelationIdHeader];
 
